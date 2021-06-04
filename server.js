@@ -1,8 +1,12 @@
-const express = require('express')
-const path = require('path')
-const app = express()
+const express = require('express');
+const path = require('path');
+const propertiesReader = require('properties-reader');
 
-app.use(express.static(path.join(__dirname, 'build')))
+
+const app = express();
+const properties = propertiesReader('settings.ini');
+
+app.use(express.static(path.join(__dirname, 'build')));
 
 var devicesRoute = require('./routes/todo');
 
@@ -10,6 +14,6 @@ app.use("devices", devicesRoute);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
+});
 
-app.listen(5050)
+app.listen(5050);

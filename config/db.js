@@ -15,7 +15,10 @@ function connect(url) {
 const todoSchema = new Schema({
     title: String,
     content: String,
-    completed: Boolean,
+    completed: {
+        type: Boolean,
+        default: false
+    },
     dateAdded: {
         type: Date,
         default: Date.now
