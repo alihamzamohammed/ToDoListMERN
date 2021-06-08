@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const express = require('express');
-const Schema = mongoose.Schema;
 
 function connect(url) {
     mongoose.connect(url).then(_ => {
@@ -11,23 +10,3 @@ function connect(url) {
         return false;
     });
 }
-
-const todoSchema = new Schema({
-    title: String,
-    content: String,
-    completed: {
-        type: Boolean,
-        default: false
-    },
-    dateAdded: {
-        type: Date,
-        default: Date.now
-    }
-});
-
-const categorySchema = new Schema({
-    title: String
-});
-
-const Todo = mongoose.model("Todo", todoSchema);
-const Category = mongoose.model("Category", categorySchema);
