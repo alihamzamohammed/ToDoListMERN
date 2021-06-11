@@ -24,8 +24,8 @@ db.once('open', _ => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  const todoRoutes = require('./routes/todoRoutes');
-  const categoryRoutes = require('./routes/categoryRoutes');
+  const todoRoutes = require('./src/routes/todoRoutes');
+  const categoryRoutes = require('./src/routes/categoryRoutes');
 
   app.use("/todo", todoRoutes);
   app.use("/category", categoryRoutes);
