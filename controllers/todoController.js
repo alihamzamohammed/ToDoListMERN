@@ -14,7 +14,7 @@ const addNewTodo = (req, res) => {
 };
 
 const getAllTodo = (req, res) => {
-    Todo.find({}, (err, todos) => {
+    Todo.find({}).populate("category").exec((err, todos) => {
         if (err) {
             res.send(err);  
         }
@@ -23,7 +23,7 @@ const getAllTodo = (req, res) => {
 };
 
 const getTodoById = (req, res) => {
-    Todo.findById(req.params.id, (err, todoFound) => {
+    Todo.findById(req.params.id).populate("category").exec((err, todoFound) => {
         if (err) {
             res.send(err);
         }
@@ -32,7 +32,7 @@ const getTodoById = (req, res) => {
 };
 
 const updateTodo = (req, res) => {
-    Todo.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, useFindAndModify: false }, (err, todoUpdated) => {
+    Todo.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, useFindAndModify: false }).populate("category").exec((err, todoUpdated) => {
         if (err) {
             res.send(err);
         }
