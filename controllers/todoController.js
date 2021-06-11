@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const todoSchema = require("../models/todoModel.js");
+const todoSchema = require("../models/todoModel");
 
 var Todo = mongoose.model("Todo", todoSchema);
 

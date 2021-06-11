@@ -1,6 +1,4 @@
-const mongoose = require("mongoose");
-
-const Schema = mongoose.Schema;
+const Schema = require("mongoose").Schema;
 
 const todoSchema = new Schema({
     title: String,
@@ -12,8 +10,11 @@ const todoSchema = new Schema({
     dateAdded: {
         type: Date,
         default: Date.now
+    },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: "Category"
     }
 });
-
 
 module.exports = todoSchema;

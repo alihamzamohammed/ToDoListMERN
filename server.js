@@ -25,8 +25,10 @@ db.once('open', _ => {
   app.use(express.urlencoded({ extended: true }));
 
   const todoRoutes = require('./routes/todoRoutes');
+  const categoryRoutes = require('./routes/categoryRoutes');
 
   app.use("/todo", todoRoutes);
+  app.use("/category", categoryRoutes);
 
   app.get("/testing", (req, res) => res.json({testing: "testing new"}))
 
