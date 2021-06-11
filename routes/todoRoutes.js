@@ -3,7 +3,7 @@ const { addNewTodo, getAllTodo, getTodoById, updateTodo, deleteTodo } = require(
 const express = require('express');
 const router = express.Router();
 
-router.get('/read', (req, res) => getAllTodo);
+router.get('/read', (req, res) => getAllTodo(req, res));
 
 router.get("/read/:id", (req, res) => getTodoById);
 

@@ -1,5 +1,7 @@
-const TodoModel = require("../models/todoModel");
-const Todo = TodoModel.Todo;
+const mongoose = require("mongoose");
+const todoSchema = require("../models/todoModel.js");
+
+var Todo = mongoose.model("Todo", todoSchema);
 
 const addNewTodo = (req, res) => {
     let newTodo = new Todo(req.body);
@@ -14,7 +16,7 @@ const addNewTodo = (req, res) => {
 const getAllTodo = (req, res) => {
     Todo.find({}, (err, todos) => {
         if (err) {
-            res.send(err);
+            res.send(err);  
         }
         res.json(todos);
     });
