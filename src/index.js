@@ -3,10 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Container } from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NavBar from './Components/Navbar';
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Container fluid>
+    <Router>
+      
+        <NavBar />
+      
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route path="/create/todo" component={App} />
+        <Route path="/create/category" component={App} />
+      </Switch>
+    </Router>
+      </Container>
   </React.StrictMode>,
   document.getElementById('root')
 );

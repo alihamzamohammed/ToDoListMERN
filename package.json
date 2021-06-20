@@ -13,7 +13,10 @@
     "mongoose": "^5.12.12",
     "properties-reader": "^2.2.0",
     "react": "^17.0.2",
+    "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
@@ -40,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sonarqube-scanner": "^2.8.1"
   }
 }
