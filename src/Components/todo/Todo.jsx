@@ -6,9 +6,9 @@ const Todo = (props) => {
         <Col className="todo-container">
             <Card className="todo-item">
                 <Card.Body>
-                    <Card.Title>props.title</Card.Title>
-                    <Card.Text>props.content</Card.Text>
-                    <Card.Subtitle className="text-muted todo-id">props.id</Card.Subtitle>
+                    <Card.Title>{props.title}</Card.Title>
+                    <Card.Text>{props.content}</Card.Text>
+                    <Card.Subtitle className="text-muted todo-id">{props.id}</Card.Subtitle>
                 </Card.Body>
             </Card>
         </Col>

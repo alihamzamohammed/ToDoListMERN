@@ -4,9 +4,9 @@
   margin-top: 1%;
 }
 
-.container {
+/* .container {
   display: none;
-}
+} */
 
 .title {
   text-align: center;
@@ -38,6 +38,8 @@
 
 .category-name {
   vertical-align: middle;
+  box-sizing: content-box;
+  text-align: center;
 }
 
 .category-id {
