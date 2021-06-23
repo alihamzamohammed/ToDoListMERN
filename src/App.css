@@ -2,6 +2,7 @@
   width: 95%;
   margin: 0 auto;
   margin-top: 1%;
+  text-decoration: none;
 }
 
 /* .container {
@@ -22,6 +23,7 @@
 
 .card-title {
   padding: 1%;
+  padding-top: 1.25rem;
 }
 
 .category {
@@ -38,7 +40,6 @@
 
 .category-name {
   vertical-align: middle;
-  box-sizing: content-box;
   text-align: center;
 }
 
@@ -60,11 +61,13 @@
 }
 
 .todo-id {
-  text-align: left;
+  text-align: centre;
   z-index: 100;
   position: absolute;
-  top: 15px;
-  left: 12px;
+  top: 12px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  /* left: 12px; */
 }
 
 .spinner {
