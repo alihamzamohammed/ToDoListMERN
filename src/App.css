@@ -98,8 +98,8 @@
 }
 
 .response {
-  display: none;
   text-align: center;
+  color: green;
 }
 
 .edit-form {
