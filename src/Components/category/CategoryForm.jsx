@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { useLocation, useParams, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
 const CategoryForm = () => {
 
-    const { id } = useParams();
-    const location = useLocation();
+    const { paramId } = useParams();
+    const [id, setId] = useState();
     const history = useHistory();
     const [title, setTitle] = useState("");
     const [response, setResponse] = useState("");
-    //var edit = location.includes("edit");
+    const [disabled, setDisabled] = useState(false);
 
     const createCategory = async () => {
         await fetch(`http://localhost:5050/category/create`, {
@@ -24,8 +24,44 @@ const CategoryForm = () => {
         setResponse("Category was created successfully!");
     };
 
+    const updateCategory = async () => {
+        await fetch(`http://localhost:5050/category/update/${id}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: title
+            })
+        });
+        setResponse("Category was updated successfully!");
+    };
+
+    const deleteCategory = async () => {
+        await fetch(`http://localhost:5050/category/delete${id}`, {
+            method: "DELETE"
+        });
+        setResponse("Category was deleted successfully!");
+        setDisabled(true);
+    };
+
+    const create = (typeof paramId === "undefined" || paramId === null);
+
+    useEffect(() => {
+        async function readCategory() {
+            const read = await fetch(`http://localhost:5050/category/read/${id}`);
+            const json = await read.json()
+            setTitle(json.name)
+            setId(paramId);
+        }
+        if (!create) {
+            readCategory()
+        }
+    }, [create, id, paramId])
+
     return (
-        (typeof id === "undefined" || id === null) ?
+        // id == 0 ? <p>This category cannot be edited</p> :
+        create ?
             <>
                 <Form className="text-input">
                     <div className="mb-3">
@@ -46,7 +82,26 @@ const CategoryForm = () => {
             </>
             :
             <>
-
+                <Form className="text-input">
+                    <div className="mb-3">
+                        <p className="text-muted">ID: {id}</p>
+                    </div>
+                    <div className="mb-3">
+                        <Form.Group>
+                            <Form.Label htmlFor="title">Title</Form.Label>
+                            <Form.Control type="text" placeholder="Enter title" name="title" value={title} onChange={event => setTitle(event.target.value)} disabled={disabled}></Form.Control>
+                        </Form.Group>
+                    </div>
+                    <div className="mb-3 gx-5">
+                        <Button variant="success" onClick={() => updateCategory()} className="form-button">Update</Button>
+                        <Button variant="primary" onClick={() => setTitle("")} className="form-button">Reset</Button>
+                        <Button variant="warning" onClick={() => history.push("/")} className="form-button">Discard</Button>
+                        <Button variant="danger" onClick={() => deleteCategory()} className="form-button">Delete</Button>
+                    </div>
+                </Form>
+                <div>
+                    <p className="response">{response}</p>
+                </div>
             </>
 
     )

@@ -46,7 +46,6 @@ function App() {
                   : false
               );
             }
-            console.log(catTodos);
             return (
               <Category
                 id={cat._id}

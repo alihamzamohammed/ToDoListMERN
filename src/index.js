@@ -20,7 +20,7 @@ ReactDOM.render(
           <Route path="/create/todo" component={TodoForm} />
           <Route path="/create/category" component={CategoryForm} />
           <Route path="/edit/todo/:id" component={TodoForm} />
-          <Route path="/edit/category/:id" component={CategoryForm} />
+          <Route path="/edit/category/:paramId" component={CategoryForm} />
         </Switch>
       </Router>
     </Container>
