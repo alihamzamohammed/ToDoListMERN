@@ -110,3 +110,7 @@
   color: inherit;
   text-decoration: inherit;
 }
+
+.error-text {
+  text-align: center;
+}

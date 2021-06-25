@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Row } from 'react-bootstrap';
 
 const CategoryForm = () => {
 
@@ -38,7 +38,7 @@ const CategoryForm = () => {
     };
 
     const deleteCategory = async () => {
-        await fetch(`http://localhost:5050/category/delete${id}`, {
+        await fetch(`http://localhost:5050/category/delete/${id}`, {
             method: "DELETE"
         });
         setResponse("Category was deleted successfully!");
@@ -54,57 +54,59 @@ const CategoryForm = () => {
             setTitle(json.name)
             setId(paramId);
         }
+        setId(paramId);
         if (!create) {
             readCategory()
         }
     }, [create, id, paramId])
 
+
     return (
-        // id == 0 ? <p>This category cannot be edited</p> :
-        create ?
-            <>
-                <Form className="text-input">
-                    <div className="mb-3">
-                        <Form.Group>
-                            <Form.Label htmlFor="title">Title</Form.Label>
-                            <Form.Control type="text" placeholder="Enter title" name="title" value={title} onChange={event => setTitle(event.target.value)}></Form.Control>
-                        </Form.Group>
+        id === "0" ? <Row className="justify-content-md-center"><p className="">This category cannot be edited</p></Row> :
+            create ?
+                <>
+                    <Form className="text-input">
+                        <div className="mb-3">
+                            <Form.Group>
+                                <Form.Label htmlFor="title">Title</Form.Label>
+                                <Form.Control type="text" placeholder="Enter title" name="title" value={title} onChange={event => setTitle(event.target.value)}></Form.Control>
+                            </Form.Group>
+                        </div>
+                        <div className="mb-3 gx-5">
+                            <Button variant="success" onClick={() => createCategory()} className="form-button">Create</Button>
+                            <Button variant="primary" onClick={() => setTitle("")} className="form-button">Reset</Button>
+                            <Button variant="warning" onClick={() => history.push("/")} className="form-button">Discard</Button>
+                        </div>
+                    </Form>
+                    <div>
+                        <p className="response">{response}</p>
                     </div>
-                    <div className="mb-3 gx-5">
-                        <Button variant="success" onClick={() => createCategory()} className="form-button">Create</Button>
-                        <Button variant="primary" onClick={() => setTitle("")} className="form-button">Reset</Button>
-                        <Button variant="warning" onClick={() => history.push("/")} className="form-button">Discard</Button>
+                </>
+                :
+                <>
+                    <Form className="text-input">
+                        <div className="mb-3">
+                            <p className="text-muted">ID: {id}</p>
+                        </div>
+                        <div className="mb-3">
+                            <Form.Group>
+                                <Form.Label htmlFor="title">Title</Form.Label>
+                                <Form.Control type="text" placeholder="Enter title" name="title" value={title} onChange={event => setTitle(event.target.value)} disabled={disabled}></Form.Control>
+                            </Form.Group>
+                        </div>
+                        <div className="mb-3 gx-5">
+                            <Button variant="success" onClick={() => updateCategory()} className="form-button">Update</Button>
+                            <Button variant="primary" onClick={() => setTitle("")} className="form-button">Reset</Button>
+                            <Button variant="warning" onClick={() => history.push("/")} className="form-button">Discard</Button>
+                            <Button variant="danger" onClick={() => deleteCategory()} className="form-button">Delete</Button>
+                        </div>
+                    </Form>
+                    <div>
+                        <p className="response">{response}</p>
                     </div>
-                </Form>
-                <div>
-                    <p className="response">{response}</p>
-                </div>
-            </>
-            :
-            <>
-                <Form className="text-input">
-                    <div className="mb-3">
-                        <p className="text-muted">ID: {id}</p>
-                    </div>
-                    <div className="mb-3">
-                        <Form.Group>
-                            <Form.Label htmlFor="title">Title</Form.Label>
-                            <Form.Control type="text" placeholder="Enter title" name="title" value={title} onChange={event => setTitle(event.target.value)} disabled={disabled}></Form.Control>
-                        </Form.Group>
-                    </div>
-                    <div className="mb-3 gx-5">
-                        <Button variant="success" onClick={() => updateCategory()} className="form-button">Update</Button>
-                        <Button variant="primary" onClick={() => setTitle("")} className="form-button">Reset</Button>
-                        <Button variant="warning" onClick={() => history.push("/")} className="form-button">Discard</Button>
-                        <Button variant="danger" onClick={() => deleteCategory()} className="form-button">Delete</Button>
-                    </div>
-                </Form>
-                <div>
-                    <p className="response">{response}</p>
-                </div>
-            </>
+                </>
 
     )
-};
+}
 
 export default CategoryForm;
