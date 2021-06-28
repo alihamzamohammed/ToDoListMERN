@@ -31,6 +31,7 @@ function App() {
 
   return (
     <>
+      <h1 className="display-3 title">Your To-Dos:</h1>
       <div className="body">
         {Array.isArray(categories) && categories.length > 0 ? (
           categories.map((cat, idx) => {

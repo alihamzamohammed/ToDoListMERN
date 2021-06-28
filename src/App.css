@@ -93,6 +93,10 @@
   padding: 2%;
 }
 
+.form-group {
+  padding: 0.5rem;
+}
+
 .form-button {
   margin-right: 1%;
 }

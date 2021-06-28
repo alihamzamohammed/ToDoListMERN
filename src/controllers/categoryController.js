@@ -11,7 +11,6 @@ const addNewCategory = (req, res) => {
     }
     res.json(categoryRes);
   });
-  return;
 };
 
 const getAllCategory = (req, res) => {
@@ -50,7 +49,6 @@ const updateCategory = (req, res) => {
       res.json(categoryUpdated);
     }
   );
-  return;
 };
 
 const deleteCategory = (req, res) => {
@@ -60,7 +58,6 @@ const deleteCategory = (req, res) => {
     }
     res.json({ message: "Successfully deleted category", object: deleted });
   });
-  return;
 };
 
 module.exports = {

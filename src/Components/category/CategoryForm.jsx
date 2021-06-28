@@ -65,6 +65,7 @@ const CategoryForm = () => {
         id === "0" ? <Row className="justify-content-md-center"><p className="">This category cannot be edited</p></Row> :
             create ?
                 <>
+                    <h1 className="display-3 title">Create Category:</h1>
                     <Form className="text-input">
                         <div className="mb-3">
                             <Form.Group>
@@ -84,6 +85,7 @@ const CategoryForm = () => {
                 </>
                 :
                 <>
+                    <h1 className="display-3 title">Edit Category:</h1>
                     <Form className="text-input">
                         <div className="mb-3">
                             <p className="text-muted">ID: {id}</p>
@@ -105,7 +107,6 @@ const CategoryForm = () => {
                         <p className="response">{response}</p>
                     </div>
                 </>
-
     )
 }
 
