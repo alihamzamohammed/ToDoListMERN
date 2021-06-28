@@ -10,6 +10,7 @@ const CategoryForm = () => {
     const [title, setTitle] = useState("");
     const [response, setResponse] = useState("");
     const [disabled, setDisabled] = useState(false);
+    const [dateAdded, setDateAdded] = useState("");
 
     const createCategory = async () => {
         await fetch(`http://localhost:5050/category/create`, {
@@ -52,6 +53,7 @@ const CategoryForm = () => {
             const read = await fetch(`http://localhost:5050/category/read/${id}`);
             const json = await read.json()
             setTitle(json.name)
+            setDateAdded(json.dateAdded);
         }
         setId(paramId);
         if (!create) {
@@ -88,6 +90,7 @@ const CategoryForm = () => {
                     <Form className="text-input">
                         <div className="mb-3">
                             <p className="text-muted">ID: {id}</p>
+                            <p className="text-muted">Date Added: {new Date(dateAdded).toUTCString()}</p>
                         </div>
                         <div className="mb-3">
                             <Form.Group>

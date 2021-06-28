@@ -13,6 +13,7 @@ const TodoForm = () => {
     const [possibleCategories, setPossibleCategories] = useState([]);
     const [response, setResponse] = useState("");
     const [disabled, setDisabled] = useState(false);
+    const [dateAdded, setDateAdded] = useState("");
 
     const createTodo = async () => {
         let send = await fetch(`http://localhost:5050/todo/create`, {
@@ -61,6 +62,7 @@ const TodoForm = () => {
             const json = await read.json();
             setTitle(json.title);
             setContent(json.content);
+            setDateAdded(json.dateAdded);
             if (json.hasOwnProperty("category")) {
                 setSelectedCategory(json.category._id)
             }
@@ -122,6 +124,7 @@ const TodoForm = () => {
                 <Form className="text-input">
                     <div className="mb-3">
                         <p className="text-muted">ID: {id}</p>
+                        <p className="text-muted">Date Added: {new Date(dateAdded).toUTCString()}</p>
                     </div>
                     <div className="mb-3">
                         <Form.Group>
