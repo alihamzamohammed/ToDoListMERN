@@ -52,7 +52,6 @@ const CategoryForm = () => {
             const read = await fetch(`http://localhost:5050/category/read/${id}`);
             const json = await read.json()
             setTitle(json.name)
-            setId(paramId);
         }
         setId(paramId);
         if (!create) {
@@ -97,10 +96,10 @@ const CategoryForm = () => {
                             </Form.Group>
                         </div>
                         <div className="mb-3 gx-5">
-                            <Button variant="success" onClick={() => updateCategory()} className="form-button">Update</Button>
-                            <Button variant="primary" onClick={() => setTitle("")} className="form-button">Reset</Button>
-                            <Button variant="warning" onClick={() => history.push("/")} className="form-button">Discard</Button>
-                            <Button variant="danger" onClick={() => deleteCategory()} className="form-button">Delete</Button>
+                            <Button variant="success" onClick={() => updateCategory()} className="form-button" disabled={disabled}>Update</Button>
+                            <Button variant="primary" onClick={() => setTitle("")} className="form-button" disabled={disabled}>Reset</Button>
+                            <Button variant="warning" onClick={() => history.push("/")} className="form-button" disabled={disabled}>Discard</Button>
+                            <Button variant="danger" onClick={() => deleteCategory()} className="form-button" disabled={disabled}>Delete</Button>
                         </div>
                     </Form>
                     <div>

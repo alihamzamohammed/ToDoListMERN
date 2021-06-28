@@ -25,7 +25,7 @@ const getAllCategory = (req, res) => {
     .catch((err) => res.status(404).send(err));
 };
 
-const getCategoryById = async (req, res) => {
+const getCategoryById = (req, res) => {
   Category.findById(req.params.id)
     .exec()
     .then((found, err) => {

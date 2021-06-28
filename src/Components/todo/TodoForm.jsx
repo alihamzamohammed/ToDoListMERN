@@ -39,7 +39,7 @@ const TodoForm = () => {
             body: JSON.stringify({
                 title: title,
                 content: content,
-                category: selectedCategory === 0 ? String(selectedCategory) : undefined
+                category: selectedCategory !== "0" ? String(selectedCategory) : undefined
             })
         });
         setResponse("Todo was updated successfully!");
@@ -58,9 +58,15 @@ const TodoForm = () => {
     useEffect(() => {
         async function readTodo() {
             const read = await fetch(`http://localhost:5050/todo/read/${id}`);
-            const json = await read.json()
-            setTitle(json.name)
-            setId(paramId);
+            const json = await read.json();
+            setTitle(json.title);
+            setContent(json.content);
+            if (json.hasOwnProperty("category")) {
+                setSelectedCategory(json.category._id)
+            }
+            else {
+                setSelectedCategory("0")
+            }
         }
         async function readCategories() {
             const read = await fetch(`http://localhost:5050/category/read`);
@@ -69,9 +75,11 @@ const TodoForm = () => {
         }
         setId(paramId);
         readCategories();
-        setSelectedCategory("0");
         if (!create) {
             readTodo()
+
+        } else {
+            setSelectedCategory("0");
         }
     }, [create, id, paramId])
 
@@ -110,7 +118,7 @@ const TodoForm = () => {
             </>
             :
             <>
-                <h1 class="display-3 title">Edit Todo:</h1>
+                <h1 className="display-3 title">Edit Todo:</h1>
                 <Form className="text-input">
                     <div className="mb-3">
                         <p className="text-muted">ID: {id}</p>
@@ -120,12 +128,24 @@ const TodoForm = () => {
                             <Form.Label htmlFor="title">Title</Form.Label>
                             <Form.Control type="text" placeholder="Enter title" name="title" value={title} onChange={event => setTitle(event.target.value)} disabled={disabled}></Form.Control>
                         </Form.Group>
+                        <Form.Group>
+                            <Form.Label htmlFor="content">Content</Form.Label>
+                            <Form.Control type="text" placeholder="Enter content" name="content" value={content} onChange={event => setContent(event.target.value)} disabled={disabled}></Form.Control>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label htmlFor="categorySelect">Category</Form.Label>
+                            <Form.Control as="select" value={selectedCategory} onChange={event => setSelectedCategory(event.target.value)} disabled={disabled}>
+                                <option value={0}>Unsorted Todos</option>
+                                {possibleCategories.map((cat, idx) => <option value={cat._id} key={idx}>{cat.name}</option>)}
+                            </Form.Control>
+                        </Form.Group>
+
                     </div>
                     <div className="mb-3 gx-5">
-                        <Button variant="success" onClick={() => updateTodo()} className="form-button">Update</Button>
-                        <Button variant="primary" onClick={() => setTitle("")} className="form-button">Reset</Button>
-                        <Button variant="warning" onClick={() => history.push("/")} className="form-button">Discard</Button>
-                        <Button variant="danger" onClick={() => deleteTodo()} className="form-button">Delete</Button>
+                        <Button variant="success" onClick={() => updateTodo()} className="form-button" disabled={disabled}>Update</Button>
+                        <Button variant="primary" onClick={() => setTitle("")} className="form-button" disabled={disabled}>Reset</Button>
+                        <Button variant="warning" onClick={() => history.push("/")} className="form-button" disabled={disabled}>Discard</Button>
+                        <Button variant="danger" onClick={() => deleteTodo()} className="form-button" disabled={disabled}>Delete</Button>
                     </div>
                 </Form>
                 <div>
