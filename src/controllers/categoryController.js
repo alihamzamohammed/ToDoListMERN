@@ -16,11 +16,11 @@ const addNewCategory = (req, res) => {
 const getAllCategory = (req, res) => {
   Category.find({})
     .exec()
-    .then((found, err) => {
+    .then((categories, err) => {
       if (err) {
         res.status(404).send(err);
       }
-      res.status(200).json(found);
+      res.status(200).json(categories);
     })
     .catch((err) => res.status(404).send(err));
 };
