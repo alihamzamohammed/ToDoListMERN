@@ -61,9 +61,8 @@ const CategoryForm = () => {
         }
     }, [create, id, paramId])
 
-
-    return (
-        id === "0" ? <Row className="justify-content-md-center"><p className="">This category cannot be edited</p></Row> :
+    function renderForm() {
+        return (
             create ?
                 <>
                     <h1 className="display-3 title">Create Category:</h1>
@@ -109,6 +108,12 @@ const CategoryForm = () => {
                         <p className="response">{response}</p>
                     </div>
                 </>
+        )
+    }
+
+
+    return (
+        id === "0" ? (<Row className="justify-content-md-center"><p className="">This category cannot be edited</p></Row>) : renderForm()
     )
 }
 
