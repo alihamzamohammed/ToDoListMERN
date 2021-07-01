@@ -7,9 +7,9 @@ const addNewCategory = (req, res) => {
   let newCategory = new Category(req.body);
   newCategory.save((err, categoryRes) => {
     if (err) {
-      res.send(err);
+      res.status(500).send(err);
     }
-    res.json(categoryRes);
+    res.status(201).json(categoryRes);
   });
 };
 
@@ -44,9 +44,9 @@ const updateCategory = (req, res) => {
     { new: true, useFindAndModify: false },
     (err, categoryUpdated) => {
       if (err) {
-        res.send(err);
+        res.status(200).send(err);
       }
-      res.json(categoryUpdated);
+      res.status(200).json(categoryUpdated);
     }
   );
 };
@@ -54,9 +54,11 @@ const updateCategory = (req, res) => {
 const deleteCategory = (req, res) => {
   Category.deleteOne({ _id: req.params.id }, (err, deleted) => {
     if (err) {
-      res.send(err);
+      res.status(404).send(err);
     }
-    res.json({ message: "Successfully deleted category", object: deleted });
+    res
+      .status(200)
+      .json({ message: "Successfully deleted category", object: deleted });
   });
 };
 

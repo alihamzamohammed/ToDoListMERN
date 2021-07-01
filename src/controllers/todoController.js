@@ -7,9 +7,9 @@ const addNewTodo = (req, res) => {
   let newTodo = new Todo(req.body);
   newTodo.save((err, todoRes) => {
     if (err) {
-      res.send(err);
+      res.status(500).send(err);
     }
-    res.json(todoRes);
+    res.status(201).json(todoRes);
   });
 };
 
@@ -47,18 +47,20 @@ const updateTodo = (req, res) => {
     .populate("category")
     .exec((err, todoUpdated) => {
       if (err) {
-        res.send(err);
+        res.status(404).send(err);
       }
-      res.json(todoUpdated);
+      res.status(200).json(todoUpdated);
     });
 };
 
 const deleteTodo = (req, res) => {
   Todo.deleteOne({ _id: req.params.id }, (err, deleted) => {
     if (err) {
-      res.send(err);
+      res.status(404).send(err);
     }
-    res.json({ message: "Successfully deleted todo", object: deleted });
+    res
+      .status(200)
+      .json({ message: "Successfully deleted todo", object: deleted });
   });
 };
 
