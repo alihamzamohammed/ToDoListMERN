@@ -10,6 +10,7 @@
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "jest": "^26.6.0",
     "mongodb": "^3.6.8",
     "mongoose": "^5.12.12",
     "properties-reader": "^2.2.0",
@@ -24,7 +25,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
+    "test:frontend": "jest --projects test/config/frontend",
+    "test:backend-unit": "jest --projects test/config/backend-unit",
+    "test:backend-integration": "jest --projects test/config/backend-integration",
+    "test:e2e": "",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
