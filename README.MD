@@ -45,7 +45,7 @@ This project depends on:
 - Cors
 - Jest
 
-All required dependeinces can be installed by running `npm install`.
+All required dependencies can be installed by running `npm install`.
 
 ## Getting Started
 
