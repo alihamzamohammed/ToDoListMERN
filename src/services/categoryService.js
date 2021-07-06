@@ -46,7 +46,7 @@ const updateCategory = async (req) => {
 
 const deleteCategory = async (req) => {
   try {
-    let deleted = Category.deleteOne({ _id: req.params.id });
+    let deleted = await Category.deleteOne({ _id: req.params.id });
     return { status: 200, response: deleted };
   } catch (err) {
     return { status: 500, response: err };
