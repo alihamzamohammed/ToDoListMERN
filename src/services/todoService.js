@@ -45,7 +45,7 @@ const updateTodo = async (req) => {
 
 const deleteTodo = async (req) => {
   try {
-    let deleted = Todo.deleteOne({ _id: req.params.id });
+    let deleted = await Todo.deleteOne({ _id: req.params.id });
     return { status: 200, response: deleted };
   } catch (err) {
     return { status: 500, response: err };
@@ -58,4 +58,5 @@ module.exports = {
   getTodoById,
   updateTodo,
   deleteTodo,
+  Todo,
 };
