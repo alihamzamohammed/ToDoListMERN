@@ -4,8 +4,8 @@ const {
   getCategoryById,
   updateCategory,
   deleteCategory,
-  Category,
 } = require("../../../services/categoryService");
+const Category = require("../../../models/categoryModel");
 
 var testCat = new Category({ name: "testing" });
 

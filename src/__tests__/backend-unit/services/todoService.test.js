@@ -4,8 +4,9 @@ const {
   getTodoById,
   updateTodo,
   deleteTodo,
-  Todo,
 } = require("../../../services/todoService");
+
+const Todo = require("../../../models/todoModel");
 
 var testTodo = new Todo({ name: "testing" });
 

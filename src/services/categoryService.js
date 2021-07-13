@@ -1,7 +1,4 @@
-const mongoose = require("mongoose");
-const categorySchema = require("../models/categoryModel");
-
-let Category = mongoose.model("Category", categorySchema);
+const Category = require("../models/categoryModel");
 
 const addNewCategory = async (req) => {
   try {
@@ -59,5 +56,4 @@ module.exports = {
   getCategoryById,
   updateCategory,
   deleteCategory,
-  Category,
 };

@@ -5,9 +5,8 @@ const {
   putCategory,
   delCategory,
 } = require("../../../controllers/categoryController");
-let service = require("../../../services/categoryService");
 
-jest.mock("../../../services/categoryService");
+const Category = require("../../../models/categoryModel");
 
 let testCat = { title: "hello" };
 
@@ -25,11 +24,13 @@ const mockRequest = (id) => {
 };
 
 describe("Category controller tests", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("Get all categories test", async () => {
-    service.getAllCategory.mockResolvedValue({
-      status: 200,
-      response: [testCat],
-    });
+    Category.find = jest.fn().mockResolvedValue([testCat]);
+
     const req = mockRequest();
     const res = mockResponse();
 
@@ -39,10 +40,7 @@ describe("Category controller tests", () => {
   });
 
   it("Get category by ID test", async () => {
-    service.getCategoryById.mockResolvedValue({
-      status: 200,
-      response: testCat,
-    });
+    Category.findById = jest.fn().mockResolvedValue(testCat);
     const req = mockRequest(0);
     const res = mockResponse();
 
@@ -52,10 +50,7 @@ describe("Category controller tests", () => {
   });
 
   it("Post category test", async () => {
-    service.addNewCategory.mockResolvedValue({
-      status: 200,
-      response: testCat,
-    });
+    Category.prototype.save = jest.fn().mockResolvedValue(testCat);
     const req = mockRequest();
     const res = mockResponse();
 
@@ -65,10 +60,7 @@ describe("Category controller tests", () => {
   });
 
   it("Put category test", async () => {
-    service.updateCategory.mockResolvedValue({
-      status: 200,
-      response: testCat,
-    });
+    Category.findOneAndUpdate = jest.fn().mockResolvedValue(testCat);
     const req = mockRequest();
     const res = mockResponse();
 
@@ -78,10 +70,7 @@ describe("Category controller tests", () => {
   });
 
   it("Delete category test", async () => {
-    service.deleteCategory.mockResolvedValue({
-      status: 200,
-      response: testCat,
-    });
+    Category.deleteOne = jest.fn().mockResolvedValue(testCat);
     const req = mockRequest();
     const res = mockResponse();
 

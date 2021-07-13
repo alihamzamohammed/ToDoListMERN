@@ -1,13 +1,12 @@
 const {
-  postCategory,
-  getCategories,
-  getCategory,
-  putCategory,
-  delCategory,
-} = require("../../../controllers/categoryController");
-let service = require("../../../services/categoryService");
+  postTodo,
+  getTodos,
+  getTodo,
+  putTodo,
+  delTodo,
+} = require("../../../controllers/todoController");
 
-jest.mock("../../../services/categoryService");
+const Todo = require("../../../models/todoModel");
 
 let testCat = { title: "hello" };
 
@@ -24,68 +23,64 @@ const mockRequest = (id) => {
   };
 };
 
-describe("Category controller tests", () => {
-  it("Get all categories test", async () => {
-    service.getAllCategory.mockResolvedValue({
-      status: 200,
-      response: [testCat],
-    });
+describe("Todo controller tests", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("Get all todos test", async () => {
+    Todo.find = jest.fn().mockImplementation(() => ({
+      populate: jest.fn().mockResolvedValue([testCat]),
+    }));
+
     const req = mockRequest();
     const res = mockResponse();
 
-    await getCategories(req, res);
+    await getTodos(req, res);
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith(expect.objectContaining([testCat]));
   });
 
-  it("Get category by ID test", async () => {
-    service.getCategoryById.mockResolvedValue({
-      status: 200,
-      response: testCat,
-    });
+  it("Get todo by ID test", async () => {
+    Todo.findById = jest.fn().mockImplementation(() => ({
+      populate: jest.fn().mockResolvedValue(testCat),
+    }));
     const req = mockRequest(0);
     const res = mockResponse();
 
-    await getCategory(req, res);
+    await getTodo(req, res);
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith(expect.objectContaining(testCat));
   });
 
-  it("Post category test", async () => {
-    service.addNewCategory.mockResolvedValue({
-      status: 200,
-      response: testCat,
-    });
+  it("Post todo test", async () => {
+    Todo.prototype.save = jest.fn().mockResolvedValue(testCat);
     const req = mockRequest();
     const res = mockResponse();
 
-    await postCategory(req, res);
+    await postTodo(req, res);
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith(expect.objectContaining(testCat));
   });
 
-  it("Put category test", async () => {
-    service.updateCategory.mockResolvedValue({
-      status: 200,
-      response: testCat,
-    });
+  it("Put todo test", async () => {
+    Todo.findOneAndUpdate = jest.fn().mockImplementation(() => ({
+      populate: jest.fn().mockResolvedValue(testCat),
+    }));
     const req = mockRequest();
     const res = mockResponse();
 
-    await putCategory(req, res);
+    await putTodo(req, res);
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith(expect.objectContaining(testCat));
   });
 
-  it("Delete category test", async () => {
-    service.deleteCategory.mockResolvedValue({
-      status: 200,
-      response: testCat,
-    });
+  it("Delete todo test", async () => {
+    Todo.deleteOne = jest.fn().mockResolvedValue(testCat);
     const req = mockRequest();
     const res = mockResponse();
 
-    await delCategory(req, res);
+    await delTodo(req, res);
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith(expect.objectContaining(testCat));
   });
