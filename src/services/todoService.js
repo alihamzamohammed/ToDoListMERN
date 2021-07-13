@@ -1,7 +1,4 @@
-const mongoose = require("mongoose");
-const todoSchema = require("../models/todoModel");
-
-var Todo = mongoose.model("Todo", todoSchema);
+const Todo = require("../models/todoModel");
 
 const addNewTodo = async (req) => {
   try {
@@ -58,5 +55,4 @@ module.exports = {
   getTodoById,
   updateTodo,
   deleteTodo,
-  Todo,
 };

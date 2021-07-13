@@ -23,13 +23,14 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env NODE_ENV=production node server.js && react-scripts start",
+    "start-dev": "cross-env NODE_ENV=development node server.js && react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
-    "test:frontend": "jest --projects test/config/frontend",
-    "test:backend-unit": "jest --projects test/config/backend-unit",
-    "test:backend-integration": "jest --projects test/config/backend-integration",
-    "test:e2e": "",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:frontend": "cross-env NODE_ENV=test jest --projects test/config/frontend",
+    "test:backend-unit": "cross-env NODE_ENV=test jest --projects test/config/backend-unit",
+    "test:backend-integration": "cross-env NODE_ENV=test jest --projects test/config/backend-integration",
+    "test:e2e": "cross-env NODE_ENV=test ",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -51,6 +52,7 @@
     ]
   },
   "devDependencies": {
-    "sonarqube-scanner": "^2.8.1"
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.12"
   }
 }
