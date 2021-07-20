@@ -23,14 +23,14 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production node server.js && react-scripts start",
+    "start": "cross-env NODE_ENV=production react-scripts start",
     "start-dev": "cross-env NODE_ENV=development node server.js && react-scripts start",
     "build": "react-scripts build",
     "test": "cross-env NODE_ENV=test jest",
     "test:frontend": "cross-env NODE_ENV=test jest --projects test/config/frontend",
     "test:backend-unit": "cross-env NODE_ENV=test jest --projects test/config/backend-unit",
     "test:backend-integration": "cross-env NODE_ENV=test jest --projects test/config/backend-integration",
-    "test:e2e": "cross-env NODE_ENV=test ",
+    "test:e2e": "cross-env NODE_ENV=test jest --projects test/config/e2e",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

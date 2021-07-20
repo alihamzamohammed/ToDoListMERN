@@ -13,9 +13,11 @@ let connect = (onConnection) => {
     useUnifiedTopology: true,
   });
 
-  mongoose.set("debug", (collectionName, method, query, doc) => {
-    console.log(`${collectionName}.${method}`, JSON.stringify(query), doc);
-  });
+  if (env === "development") {
+    mongoose.set("debug", (collectionName, method, query, doc) => {
+      console.log(`${collectionName}.${method}`, JSON.stringify(query), doc);
+    });
+  }
 
   var db = mongoose.connection;
 
