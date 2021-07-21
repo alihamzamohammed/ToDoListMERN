@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
+    "cross-fetch": "^3.1.4",
     "express": "^4.17.1",
     "jest": "^26.6.0",
     "mongodb": "^3.6.8",
@@ -20,8 +21,7 @@
     "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2",
-    "whatwg-fetch": "^3.6.2"
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=production react-scripts start",
@@ -55,6 +55,7 @@
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
     "cross-env": "^7.0.3",
+    "jest-fetch-mock": "^3.0.3",
     "nodemon": "^2.0.12",
     "prettier": "^2.3.2"
   }

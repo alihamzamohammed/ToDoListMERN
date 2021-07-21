@@ -48,12 +48,17 @@ const CategoryForm = () => {
   const create = typeof paramId === "undefined" || paramId === null;
 
   useEffect(() => {
-    async function readCategory() {
-      const read = await fetch(`http://localhost:5050/category/read/${id}`);
-      const json = await read.json();
-      setTitle(json.name);
-      setDateAdded(json.dateAdded);
-    }
+    const readCategory = async () => {
+      try {
+        const read = await fetch(`http://localhost:5050/category/read/${id}`);
+        const result = await read.json();
+        console.log(result);
+        setTitle(result.name);
+        setDateAdded(result.dateAdded);
+      } catch (err) {
+        console.error(err);
+      }
+    };
     setId(paramId);
     if (!create) {
       readCategory();

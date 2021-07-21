@@ -72,7 +72,7 @@ exports[`Home page tests Renders category with todos 1`] = `
           >
             <a
               class="link-text"
-              href="/edit/todo/0"
+              href="/edit/todo/321"
             >
               <div
                 class="todo-item card"
@@ -82,42 +82,18 @@ exports[`Home page tests Renders category with todos 1`] = `
                 >
                   <div
                     class="card-title h5"
-                  />
-                  <p
-                    class="card-text"
-                  />
-                  <div
-                    class="text-muted todo-id card-subtitle h6"
                   >
-                    0
+                    test todo
                   </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div
-            class="todo-container col"
-          >
-            <a
-              class="link-text"
-              href="/edit/todo/123"
-            >
-              <div
-                class="todo-item card"
-              >
-                <div
-                  class="card-body"
-                >
-                  <div
-                    class="card-title h5"
-                  />
                   <p
                     class="card-text"
-                  />
+                  >
+                    test todo contents
+                  </p>
                   <div
                     class="text-muted todo-id card-subtitle h6"
                   >
-                    123
+                    321
                   </div>
                 </div>
               </div>
@@ -207,64 +183,7 @@ exports[`Home page tests Renders only category 1`] = `
         </div>
         <div
           class="row"
-        >
-          <div
-            class="todo-container col"
-          >
-            <a
-              class="link-text"
-              href="/edit/todo/0"
-            >
-              <div
-                class="todo-item card"
-              >
-                <div
-                  class="card-body"
-                >
-                  <div
-                    class="card-title h5"
-                  />
-                  <p
-                    class="card-text"
-                  />
-                  <div
-                    class="text-muted todo-id card-subtitle h6"
-                  >
-                    0
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div
-            class="todo-container col"
-          >
-            <a
-              class="link-text"
-              href="/edit/todo/123"
-            >
-              <div
-                class="todo-item card"
-              >
-                <div
-                  class="card-body"
-                >
-                  <div
-                    class="card-title h5"
-                  />
-                  <p
-                    class="card-text"
-                  />
-                  <div
-                    class="text-muted todo-id card-subtitle h6"
-                  >
-                    123
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
+        />
       </div>
     </a>
     <a

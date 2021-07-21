@@ -1,10 +1,11 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
-import "whatwg-fetch";
-
+import { enableFetchMocks } from "jest-fetch-mock";
 import { MemoryRouter as Router, Route } from "react-router-dom";
 import CategoryForm from "../../../../Components/Category/CategoryForm";
+
+enableFetchMocks();
 
 describe("Category Form Tests", () => {
   let container;
@@ -12,23 +13,18 @@ describe("Category Form Tests", () => {
   beforeEach(() => {
     container = document.createElement("div");
     document.body.appendChild(container);
-    jest.resetAllMocks();
   });
 
   afterEach(() => {
     unmountComponentAtNode(container);
     container.remove();
     container = null;
-  });
-
-  afterAll(() => {
-    global.fetch.mockClear();
-    delete global.fetch;
+    fetch.resetMocks();
   });
 
   it("Renders the Edit Category Form with ID 0", () => {
     jest.mock("react-router", () => ({
-      ...jest.requireActual("react-router"), // use actual for all non-hook parts
+      ...jest.requireActual("react-router"),
       useParams: () => ({
         paramId: "0",
       }),
@@ -49,19 +45,15 @@ describe("Category Form Tests", () => {
 
   it("Renders the Edit Category Form", async () => {
     const testCat = {
-      name: "Test Category",
-      _id: "123",
+      _id: "60e466c86acde2a0a470895d",
+      name: "testing",
       dateAdded: "2021-07-06T14:20:56.175Z",
     };
 
-    global.fetch = jest.fn().mockImplementation(() =>
-      Promise.resolve({
-        json: () => Promise.resolve(testCat),
-      })
-    );
+    fetch.mockResponse(JSON.stringify(testCat));
 
     jest.mock("react-router", () => ({
-      ...jest.requireActual("react-router"), // use actual for all non-hook parts
+      ...jest.requireActual("react-router"),
       useParams: () => ({
         paramId: "123",
       }),
@@ -77,13 +69,14 @@ describe("Category Form Tests", () => {
         container
       );
     });
+
     expect(container).toMatchSnapshot();
   });
 
   it("Renders the Create Category Form", () => {
     act(() => {
       render(
-        <Router location="/create/category">
+        <Router>
           <CategoryForm></CategoryForm>
         </Router>,
         container

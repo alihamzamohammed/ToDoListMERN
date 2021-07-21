@@ -1,9 +1,11 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
-
+import { enableFetchMocks } from "jest-fetch-mock";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "../../../Components/Home";
+
+enableFetchMocks();
 
 describe("Home page tests", () => {
   let container;
@@ -17,6 +19,7 @@ describe("Home page tests", () => {
     unmountComponentAtNode(container);
     container.remove();
     container = null;
+    fetch.resetMocks();
   });
 
   it("Renders category with todos", async () => {
@@ -24,15 +27,16 @@ describe("Home page tests", () => {
       {
         name: "Test Category",
         _id: "123",
-        todos: [{ title: "test todo", contents: "test todo contents" }],
       },
     ];
 
-    global.fetch = jest.fn().mockImplementation(() =>
-      Promise.resolve({
-        json: () => Promise.resolve(testCats),
-      })
-    );
+    const testTodos = [
+      { _id: "321", title: "test todo", content: "test todo contents" },
+    ];
+
+    fetch
+      .mockResponseOnce(JSON.stringify(testCats))
+      .mockResponseOnce(JSON.stringify(testTodos));
 
     await act(async () => {
       render(
@@ -54,11 +58,9 @@ describe("Home page tests", () => {
       },
     ];
 
-    global.fetch = jest.fn().mockImplementation(() =>
-      Promise.resolve({
-        json: () => Promise.resolve(testCats),
-      })
-    );
+    fetch
+      .mockResponseOnce(JSON.stringify(testCats))
+      .mockResponseOnce(JSON.stringify([]));
 
     await act(async () => {
       render(

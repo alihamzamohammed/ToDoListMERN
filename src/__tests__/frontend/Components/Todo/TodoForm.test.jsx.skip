@@ -1,0 +1,103 @@
+import React from "react";
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from "react-dom/test-utils";
+
+import { MemoryRouter as Router, Route } from "react-router-dom";
+import TodoForm from "../../../../Components/Todo/TodoForm";
+
+describe("Category Form Tests", () => {
+  let container;
+
+  beforeEach(() => {
+    container = document.createElement("div");
+    document.body.appendChild(container);
+    jest.resetAllMocks();
+  });
+
+  afterEach(() => {
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+  });
+
+  afterAll(() => {
+    global.fetch.mockClear();
+    delete global.fetch;
+  });
+
+  it("Renders the Edit Todo Form", async () => {
+    const testTodo = {
+      title: "Test Title",
+      content: "Test Content",
+      category: { _id: "123" },
+      _id: "123",
+      dateAdded: "2021-07-06T14:20:56.175Z",
+    };
+
+    const testCat = [
+      {
+        name: "Test Category",
+        _id: "123",
+        dateAdded: "2021-07-06T14:20:56.175Z",
+      },
+    ];
+
+    global.fetch = jest
+      .fn()
+      //   .mockImplementationOnce(() =>
+      //     Promise.resolve({
+      //       json: () => Promise.resolve(testCat),
+      //     })
+      //   )
+      .mockImplementation(() => {
+        Promise.resolve({
+          json: () => Promise.resolve(testTodo),
+        });
+      });
+
+    jest.mock("react-router", () => ({
+      ...jest.requireActual("react-router"), // use actual for all non-hook parts
+      useParams: () => ({
+        paramId: "123",
+      }),
+    }));
+
+    await act(async () => {
+      render(
+        <Router initialEntries={["/edit/todo/123"]}>
+          <Route path="/edit/todo/:paramId">
+            <TodoForm></TodoForm>
+          </Route>
+        </Router>,
+        container
+      );
+    });
+    expect(container).toMatchSnapshot();
+  });
+
+  it("Renders the Create Category Form", async () => {
+    const testCat = [
+      {
+        name: "Test Category",
+        _id: "123",
+        dateAdded: "2021-07-06T14:20:56.175Z",
+      },
+    ];
+
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        json: () => Promise.resolve(testCat),
+      })
+    );
+
+    await act(async () => {
+      render(
+        <Router location="/create/todo">
+          <TodoForm></TodoForm>
+        </Router>,
+        container
+      );
+    });
+    expect(container).toMatchSnapshot();
+  });
+});
