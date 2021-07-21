@@ -7,7 +7,7 @@ import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./Components/Navbar";
 import CategoryForm from "./Components/Category/CategoryForm";
-import TodoForm from "./Components/Codo/TodoForm";
+import TodoForm from "./Components/Todo/TodoForm";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -29,5 +29,12 @@ describe("Todo Card Tests", () => {
       );
     });
     expect(container).toMatchSnapshot();
+    expect(container.querySelector(".card-title").textContent).toBe(
+      "Test Title"
+    );
+    expect(container.querySelector(".card-text").textContent).toBe(
+      "Test Content"
+    );
+    expect(container.querySelector(".card-subtitle").textContent).toBe("1234");
   });
 });
