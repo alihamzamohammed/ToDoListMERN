@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Spinner } from "react-bootstrap";
-import Category from "./category/Category";
+import Category from "./Category/Category";
 
 function App() {
   const [todos, setTodos] = useState([]);

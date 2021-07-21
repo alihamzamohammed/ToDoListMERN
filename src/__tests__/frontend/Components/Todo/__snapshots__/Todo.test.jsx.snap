@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todo Card Tests Renders the navbar 1`] = `
+<div>
+  <div
+    class="todo-container col"
+  >
+    <a
+      class="link-text"
+      href="/edit/todo/1234"
+    >
+      <div
+        class="todo-item card"
+      >
+        <div
+          class="card-body"
+        >
+          <div
+            class="card-title h5"
+          >
+            Test Title
+          </div>
+          <p
+            class="card-text"
+          >
+            Test Content
+          </p>
+          <div
+            class="text-muted todo-id card-subtitle h6"
+          >
+            1234
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+`;
