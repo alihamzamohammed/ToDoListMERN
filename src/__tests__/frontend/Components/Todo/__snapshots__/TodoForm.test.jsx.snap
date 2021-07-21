@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category Form Tests Renders the Create Todo Form 1`] = `
+<div>
+  <h1
+    class="display-3 title"
+  >
+    Create Todo:
+  </h1>
+  <form
+    class="text-input"
+  >
+    <div
+      class="mb-3"
+    >
+      <div
+        class="form-group"
+      >
+        <label
+          class="form-label"
+          for="title"
+        >
+          Title
+        </label>
+        <input
+          class="form-control"
+          name="title"
+          placeholder="Enter title"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="form-group"
+      >
+        <label
+          class="form-label"
+          for="content"
+        >
+          Content
+        </label>
+        <input
+          class="form-control"
+          name="content"
+          placeholder="Enter content"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="form-group"
+      >
+        <label
+          class="form-label"
+          for="categorySelect"
+        >
+          Category
+        </label>
+        <select
+          class="form-control"
+        >
+          <option
+            value="0"
+          >
+            Unsorted Todos
+          </option>
+          <option
+            value="123"
+          >
+            Test Category
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      class="mb-3 gx-5"
+    >
+      <button
+        class="form-button btn btn-success"
+        type="button"
+      >
+        Create
+      </button>
+      <button
+        class="form-button btn btn-primary"
+        type="button"
+      >
+        Reset
+      </button>
+      <button
+        class="form-button btn btn-warning"
+        type="button"
+      >
+        Discard
+      </button>
+    </div>
+  </form>
+  <div>
+    <p
+      class="response"
+    />
+  </div>
+</div>
+`;
+
+exports[`Category Form Tests Renders the Edit Todo Form 1`] = `
+<div>
+  <h1
+    class="display-3 title"
+  >
+    Edit Todo:
+  </h1>
+  <form
+    class="text-input"
+  >
+    <div
+      class="mb-3"
+    >
+      <p
+        class="text-muted"
+      >
+        ID: 
+        123
+      </p>
+      <p
+        class="text-muted"
+      >
+        Date Added: 
+        Tue, 06 Jul 2021 14:20:56 GMT
+      </p>
+    </div>
+    <div
+      class="mb-3"
+    >
+      <div
+        class="form-group"
+      >
+        <label
+          class="form-label"
+          for="title"
+        >
+          Title
+        </label>
+        <input
+          class="form-control"
+          name="title"
+          placeholder="Enter title"
+          type="text"
+          value="Test Title"
+        />
+      </div>
+      <div
+        class="form-group"
+      >
+        <label
+          class="form-label"
+          for="content"
+        >
+          Content
+        </label>
+        <input
+          class="form-control"
+          name="content"
+          placeholder="Enter content"
+          type="text"
+          value="Test Content"
+        />
+      </div>
+      <div
+        class="form-group"
+      >
+        <label
+          class="form-label"
+          for="categorySelect"
+        >
+          Category
+        </label>
+        <select
+          class="form-control"
+        >
+          <option
+            value="0"
+          >
+            Unsorted Todos
+          </option>
+          <option
+            value="123"
+          >
+            Test Category
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      class="mb-3 gx-5"
+    >
+      <button
+        class="form-button btn btn-success"
+        type="button"
+      >
+        Update
+      </button>
+      <button
+        class="form-button btn btn-primary"
+        type="button"
+      >
+        Reset
+      </button>
+      <button
+        class="form-button btn btn-warning"
+        type="button"
+      >
+        Discard
+      </button>
+      <button
+        class="form-button btn btn-danger"
+        type="button"
+      >
+        Delete
+      </button>
+    </div>
+  </form>
+  <div>
+    <p
+      class="response"
+    />
+  </div>
+</div>
+`;

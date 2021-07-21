@@ -1,9 +1,11 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
-
+import { enableFetchMocks } from "jest-fetch-mock";
 import { MemoryRouter as Router, Route } from "react-router-dom";
 import TodoForm from "../../../../Components/Todo/TodoForm";
+
+enableFetchMocks();
 
 describe("Category Form Tests", () => {
   let container;
@@ -11,18 +13,13 @@ describe("Category Form Tests", () => {
   beforeEach(() => {
     container = document.createElement("div");
     document.body.appendChild(container);
-    jest.resetAllMocks();
   });
 
   afterEach(() => {
     unmountComponentAtNode(container);
     container.remove();
     container = null;
-  });
-
-  afterAll(() => {
-    global.fetch.mockClear();
-    delete global.fetch;
+    fetch.resetMocks();
   });
 
   it("Renders the Edit Todo Form", async () => {
@@ -34,7 +31,7 @@ describe("Category Form Tests", () => {
       dateAdded: "2021-07-06T14:20:56.175Z",
     };
 
-    const testCat = [
+    const testCats = [
       {
         name: "Test Category",
         _id: "123",
@@ -42,21 +39,12 @@ describe("Category Form Tests", () => {
       },
     ];
 
-    global.fetch = jest
-      .fn()
-      //   .mockImplementationOnce(() =>
-      //     Promise.resolve({
-      //       json: () => Promise.resolve(testCat),
-      //     })
-      //   )
-      .mockImplementation(() => {
-        Promise.resolve({
-          json: () => Promise.resolve(testTodo),
-        });
-      });
+    fetch
+      .mockResponseOnce(JSON.stringify(testCats))
+      .mockResponseOnce(JSON.stringify(testTodo));
 
     jest.mock("react-router", () => ({
-      ...jest.requireActual("react-router"), // use actual for all non-hook parts
+      ...jest.requireActual("react-router"),
       useParams: () => ({
         paramId: "123",
       }),
@@ -75,8 +63,8 @@ describe("Category Form Tests", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it("Renders the Create Category Form", async () => {
-    const testCat = [
+  it("Renders the Create Todo Form", async () => {
+    const testCats = [
       {
         name: "Test Category",
         _id: "123",
@@ -84,15 +72,11 @@ describe("Category Form Tests", () => {
       },
     ];
 
-    global.fetch = jest.fn().mockImplementation(() =>
-      Promise.resolve({
-        json: () => Promise.resolve(testCat),
-      })
-    );
+    fetch.mockResponse(JSON.stringify(testCats));
 
     await act(async () => {
       render(
-        <Router location="/create/todo">
+        <Router>
           <TodoForm></TodoForm>
         </Router>,
         container
