@@ -6,7 +6,7 @@ import Todo from "../Todo/Todo";
 const Category = (props) => {
   return (
     <Link to={"/edit/category/" + props.id} className="link-text">
-      <div className="category">
+      <div className="category" id={`category-${props.id}`}>
         <Row>
           <Col xmd="1" className="category-id">
             <h4>{props.id}</h4>
