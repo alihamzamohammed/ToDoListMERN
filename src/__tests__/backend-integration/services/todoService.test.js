@@ -21,7 +21,7 @@ describe("Todo service integration test", () => {
   });
 
   afterEach(async () => {
-    Todo.deleteMany();
+    Todo.deleteMany({});
   });
 
   afterAll(() => {
@@ -44,14 +44,20 @@ describe("Todo service integration test", () => {
   });
 
   it("Add new todo correct input", async () => {
-    const req = { body: { name: "new todo" } };
+    const req = { body: { title: "new todo", content: "new todo" } };
     const response = await addNewTodo(req);
     const expectedResponse = {
       status: 200,
       response: { title: "new todo", content: "new todo" },
     };
     expect(response.status).toEqual(expectedResponse.status);
-    expect(response.response._doc.name).toEqual(expectedResponse.response.name);
+    expect(response.response._doc.title).toEqual(
+      expectedResponse.response.title
+    );
+    expect(response.response._doc.content).toEqual(
+      expectedResponse.response.content
+    );
+    await Todo.findOneAndDelete({ title: "new todo" });
   });
 
   it("Update todo correct input", async () => {

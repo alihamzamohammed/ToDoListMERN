@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "concurrently": "^6.2.0",
     "cors": "^2.8.5",
     "cross-fetch": "^3.1.4",
     "express": "^4.17.1",
@@ -24,8 +25,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production react-scripts start",
-    "start-dev": "cross-env NODE_ENV=development node server.js && react-scripts start",
+    "start": "cross-env NODE_ENV=production concurrently 'node server.js' 'react-scripts start'",
+    "start-dev": "cross-env NODE_ENV=development concurrently 'node server.js' 'react-scripts start'",
     "build": "react-scripts build",
     "test": "cross-env NODE_ENV=test jest",
     "test:frontend": "cross-env NODE_ENV=test jest --projects test/config/frontend",
@@ -57,6 +58,7 @@
     "cross-env": "^7.0.3",
     "jest-fetch-mock": "^3.0.3",
     "nodemon": "^2.0.12",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "puppeteer": "^10.1.0"
   }
 }

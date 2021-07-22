@@ -52,7 +52,6 @@ const CategoryForm = () => {
       try {
         const read = await fetch(`http://localhost:5050/category/read/${id}`);
         const result = await read.json();
-        console.log(result);
         setTitle(result.name);
         setDateAdded(result.dateAdded);
       } catch (err) {

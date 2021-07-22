@@ -21,7 +21,7 @@ describe("Category service integration test", () => {
   });
 
   afterEach(async () => {
-    Category.deleteMany();
+    Category.deleteMany({});
   });
 
   afterAll(() => {
@@ -62,6 +62,7 @@ describe("Category service integration test", () => {
     };
     expect(response.status).toEqual(expectedResponse.status);
     expect(response.response._doc.name).toEqual(expectedResponse.response.name);
+    await Category.findOneAndDelete({ name: "new category" });
   });
 
   it("Update category correct input", async () => {
