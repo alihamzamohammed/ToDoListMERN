@@ -58,6 +58,7 @@
     "@babel/preset-react": "^7.14.5",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.3",
+    "jest-extended": "^0.11.5",
     "jest-fetch-mock": "^3.0.3",
     "jest-puppeteer": "^5.0.4",
     "nodemon": "^2.0.12",

@@ -12,7 +12,7 @@ const CategoryForm = () => {
   const [dateAdded, setDateAdded] = useState("");
 
   const createCategory = async () => {
-    await fetch(`http://localhost:5050/category/create`, {
+    const cat = await fetch(`http://localhost:5050/category/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +21,8 @@ const CategoryForm = () => {
         name: title,
       }),
     });
-    setResponse("Category was created successfully!");
+    const res = await cat.json();
+    setResponse(`Category was created successfully! ID: ${res._id}`);
   };
 
   const updateCategory = async () => {
