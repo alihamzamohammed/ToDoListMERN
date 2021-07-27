@@ -28,6 +28,7 @@ let connect = (onConnection) => {
 
   if (onConnection) {
     db.once("open", onConnection);
+    return Promise.resolve();
   }
 };
 
@@ -35,6 +36,7 @@ let disconnect = (onDisconnect) => {
   mongoose.disconnect();
   if (onDisconnect) {
     mongoose.connection.on("disconnected", onDisconnect);
+    return Promise.resolve();
   }
 };
 
