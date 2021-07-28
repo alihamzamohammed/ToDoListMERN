@@ -58,6 +58,7 @@ exports[`Category Form Tests Renders the Create Todo Form 1`] = `
         </label>
         <select
           class="form-control"
+          name="possibleCategories"
         >
           <option
             value="0"
@@ -177,6 +178,7 @@ exports[`Category Form Tests Renders the Edit Todo Form 1`] = `
         </label>
         <select
           class="form-control"
+          name="possibleCategories"
         >
           <option
             value="0"

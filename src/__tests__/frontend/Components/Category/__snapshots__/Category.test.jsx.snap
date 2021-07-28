@@ -8,6 +8,7 @@ exports[`Todo Card Tests Renders the navbar 1`] = `
   >
     <div
       class="category"
+      id="category-1234"
     >
       <div
         class="row"

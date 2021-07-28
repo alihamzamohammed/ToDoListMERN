@@ -31,6 +31,7 @@ exports[`Navbar Tests Renders the navbar 1`] = `
           class="active nav-link"
           data-rb-event-key="/"
           href="/"
+          id="nav-home"
         >
           Home
         </a>
