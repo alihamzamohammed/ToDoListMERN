@@ -27,8 +27,8 @@ const TodoForm = () => {
           selectedCategory !== "0" ? String(selectedCategory) : undefined,
       }),
     });
-    console.log(send);
-    setResponse("Todo was created successfully!");
+    let json = await send.json();
+    setResponse(`Todo was created successfully! ID: ${json._id}`);
   };
 
   const updateTodo = async () => {
@@ -121,6 +121,7 @@ const TodoForm = () => {
             <Form.Label htmlFor="categorySelect">Category</Form.Label>
             <Form.Control
               as="select"
+              name="possibleCategories"
               value={selectedCategory}
               onChange={(event) => setSelectedCategory(event.target.value)}
             >
@@ -143,7 +144,10 @@ const TodoForm = () => {
           </Button>
           <Button
             variant="primary"
-            onClick={() => setTitle("")}
+            onClick={() => {
+              setTitle("");
+              setContent("");
+            }}
             className="form-button"
           >
             Reset
@@ -198,6 +202,7 @@ const TodoForm = () => {
             <Form.Label htmlFor="categorySelect">Category</Form.Label>
             <Form.Control
               as="select"
+              name="possibleCategories"
               value={selectedCategory}
               onChange={(event) => setSelectedCategory(event.target.value)}
               disabled={disabled}
@@ -222,7 +227,10 @@ const TodoForm = () => {
           </Button>
           <Button
             variant="primary"
-            onClick={() => setTitle("")}
+            onClick={() => {
+              setTitle("");
+              setContent("");
+            }}
             className="form-button"
             disabled={disabled}
           >

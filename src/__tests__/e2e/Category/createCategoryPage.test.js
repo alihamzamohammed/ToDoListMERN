@@ -1,7 +1,6 @@
 import "jest-extended";
 const { connect, disconnect } = require("../../../helper/db");
 const Category = require("../../../models/categoryModel");
-const Todo = require("../../../models/todoModel");
 
 describe("Create categry page tests", () => {
   beforeAll(async () => {
