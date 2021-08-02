@@ -2,7 +2,7 @@ import "jest-extended";
 const { connect, disconnect } = require("../../../helper/db");
 const Category = require("../../../models/categoryModel");
 
-describe("Create categry page tests", () => {
+describe("Create category page tests", () => {
   beforeAll(async () => {
     await connect();
   });
