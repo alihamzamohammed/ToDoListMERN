@@ -25,7 +25,7 @@ const addNewTodo = async (req) => {
  */
 const getAllTodo = async () => {
   try {
-    let todos = await Todo.find({}).populate("todo");
+    let todos = await Todo.find({}).populate("category");
     return { status: 200, response: todos };
   } catch (err) {
     return { status: 500, response: err };
@@ -39,7 +39,7 @@ const getAllTodo = async () => {
  */
 const getTodoById = async (req) => {
   try {
-    let todo = await Todo.findById(req.params.id).populate("todo");
+    let todo = await Todo.findById(req.params.id).populate("category");
     return { status: 200, response: todo };
   } catch (err) {
     return { status: 404, response: err };
