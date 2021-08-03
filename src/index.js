@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import "./App.css";
+import App from "./Components/Home";
 import reportWebVitals from "./reportWebVitals";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./Components/Navbar";
-import CategoryForm from "./Components/category/CategoryForm";
-import TodoForm from "./Components/todo/TodoForm";
+import CategoryForm from "./Components/Category/CategoryForm";
+import TodoForm from "./Components/Todo/TodoForm";
 
 ReactDOM.render(
   <React.StrictMode>

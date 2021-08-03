@@ -4,4 +4,6 @@ node_modules
 target
 package-lock.json
 .eslintrc.json
-.env
+*.env
+test/coverage
+build
