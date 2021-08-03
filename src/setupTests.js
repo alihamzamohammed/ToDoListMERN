@@ -1,5 +1,12 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+const { connect, disconnect } = require("../../src/helper/db");
+const Category = require("../../src/models/categoryModel");
+const Todo = require("../../src/models/todoModel");
+
+module.exports = beforeAll(async () => {
+  console.log("Tests finished");
+  await connect();
+  Category.deleteMany({});
+  Todo.deleteMany({});
+  await disconnect();
+  console.log("Database cleared");
+});

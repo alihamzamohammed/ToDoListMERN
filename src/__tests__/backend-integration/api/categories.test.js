@@ -14,6 +14,7 @@ describe("Backend API Category tests", () => {
   });
 
   afterAll(async () => {
+    await Category.deleteMany({});
     await disconnect();
   });
 
@@ -48,7 +49,7 @@ describe("Backend API Category tests", () => {
       });
   });
 
-  it("POST category test", () => {
+  it("POST category test", (done) => {
     let newCat = { name: "New Category" };
     return request(app)
       .post("/category/create")
@@ -60,6 +61,7 @@ describe("Backend API Category tests", () => {
           JSON.parse(JSON.stringify(saved))
         );
         await Category.findByIdAndDelete(saved._id);
+        done();
       });
   });
 

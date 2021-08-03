@@ -3,7 +3,4 @@ module.exports = {
   displayName: "E2E Tests",
   roots: ["<rootDir>../../../src/__tests__/e2e"],
   preset: "jest-puppeteer",
-  maxWorkers: 1,
-  silent: false,
-  verbose: true,
 };

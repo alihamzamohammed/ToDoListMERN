@@ -14,6 +14,7 @@ describe("Backend API Todo tests", () => {
   });
 
   afterAll(async () => {
+    await Todo.deleteMany({});
     await disconnect();
   });
 
@@ -48,7 +49,7 @@ describe("Backend API Todo tests", () => {
       });
   });
 
-  it("POST todo test", () => {
+  it("POST todo test", (done) => {
     let newTodo = { title: "New Todo", content: "New Todo Content" };
     return request(app)
       .post("/todo/create")
@@ -60,6 +61,7 @@ describe("Backend API Todo tests", () => {
           JSON.parse(JSON.stringify(saved))
         );
         await Todo.findByIdAndDelete(saved._id);
+        done();
       });
   });
 

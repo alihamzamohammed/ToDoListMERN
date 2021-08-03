@@ -3,5 +3,7 @@ module.exports = {
   coverageDirectory: "test/coverage",
   coverageReporters: ["lcov", "json"],
   collectCoverage: true,
-  setupFilesAfterEnv: ["jest-extended"],
+  setupFilesAfterEnv: ["jest-extended", "./src/setupTests.js"],
+  maxWorkers: 1,
+  verbose: true,
 };
