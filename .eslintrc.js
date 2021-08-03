@@ -2,6 +2,8 @@ module.exports = {
   parser: "babel-eslint",
   env: {
     jest: true,
+    node: true,
+    commonjs: true,
   },
   globals: {
     page: true,

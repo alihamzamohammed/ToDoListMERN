@@ -6,3 +6,4 @@ package-lock.json
 .eslintrc.json
 *.env
 test/coverage
+build
