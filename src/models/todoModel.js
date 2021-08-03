@@ -1,5 +1,8 @@
 const { Schema, model } = require("mongoose");
 
+/**
+ * Mongoose Schema for Todo object
+ */
 const todoSchema = new Schema({
   title: String,
   content: String,
@@ -19,4 +22,7 @@ const todoSchema = new Schema({
 
 let Todo = model("Todo", todoSchema);
 
+/**
+ * Exports Mongoose model for Todo Schema
+ */
 module.exports = Todo;

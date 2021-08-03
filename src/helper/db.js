@@ -5,6 +5,12 @@ const env = process.env.NODE_ENV || "development";
 
 const config = envConfigs[env];
 
+/**
+ * Helper function to connect to MongoDB database
+ *
+ * @param {connect} onConnection
+ * @returns {Promise} Resolved promise to indicate successful database connection
+ */
 let connect = (onConnection) => {
   mongoose.Promise = global.Promise;
 
@@ -32,6 +38,12 @@ let connect = (onConnection) => {
   }
 };
 
+/**
+ * Helper function to disconnect from MongoDB database
+ *
+ * @param {disconnect} onDisconnect
+ * @returns {Promise} Resolved promise to indicate successful database dicsonnection
+ */
 let disconnect = (onDisconnect) => {
   mongoose.disconnect();
   if (onDisconnect) {

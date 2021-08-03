@@ -6,6 +6,10 @@ const app = express();
 
 app.use(cors());
 
+/**
+ * Connect function called when mongoose establishes a database connection
+ * @callback connect
+ */
 connect(() => {
   console.log("Connection established to database!");
   app.use(express.static(path.join(__dirname, "build")));

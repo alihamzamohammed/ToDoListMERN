@@ -1,5 +1,8 @@
 require("dotenv").config();
 
+/**
+ * JSON object to identify which environment the code is being run in
+ */
 module.exports = {
   development: {
     url: process.env.DEV_DATABASE_URL,

@@ -1,5 +1,8 @@
 const { Schema, model } = require("mongoose");
 
+/**
+ * Mongoose schema for Category object
+ */
 const categorySchema = new Schema({
   name: String,
   dateAdded: {
@@ -14,4 +17,7 @@ const categorySchema = new Schema({
 
 let Category = model("Category", categorySchema);
 
+/**
+ * Exports Moongoose model for Category schema
+ */
 module.exports = Category;

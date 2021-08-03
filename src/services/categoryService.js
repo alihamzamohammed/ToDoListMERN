@@ -1,5 +1,14 @@
+/**
+ * Service functions for category
+ */
+
 const Category = require("../models/categoryModel");
 
+/**
+ * Saves new category to database
+ * @param {express.Request} req Indicates contents of new category
+ * @returns {Object} Object with correct status and database response
+ */
 const addNewCategory = async (req) => {
   try {
     let newCategory = new Category(req.body);
@@ -10,6 +19,10 @@ const addNewCategory = async (req) => {
   }
 };
 
+/**
+ * Gets all categories from database
+ * @returns {Object} Object with correct status and database response
+ */
 const getAllCategory = async () => {
   try {
     let categories = await Category.find({});
@@ -19,6 +32,11 @@ const getAllCategory = async () => {
   }
 };
 
+/**
+ * Gets specific ctegory by ID
+ * @param {express.Request} req Indicates ID of category
+ * @returns {Object} Object with correct status and database response
+ */
 const getCategoryById = async (req) => {
   try {
     let category = await Category.findById(req.params.id);
@@ -28,6 +46,11 @@ const getCategoryById = async (req) => {
   }
 };
 
+/**
+ * Updates category by ID with specified contents
+ * @param {express.Request} req Indicates ID and new contents of category
+ * @returns {Object} Object with correct status and database response
+ */
 const updateCategory = async (req) => {
   try {
     let category = await Category.findOneAndUpdate(
@@ -41,6 +64,11 @@ const updateCategory = async (req) => {
   }
 };
 
+/**
+ * Deletes category by ID
+ * @param {express.Request} req Indicates ID of category
+ * @returns {Object} Object with correct status and database response
+ */
 const deleteCategory = async (req) => {
   try {
     let deleted = await Category.deleteOne({ _id: req.params.id });
