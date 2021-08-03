@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const envConfigs = require("./config");
 const env = process.env.NODE_ENV || "development";
 
-const config = envConfigs[env];
+let config;
 
 /**
  * Helper function to connect to MongoDB database
@@ -11,8 +11,16 @@ const config = envConfigs[env];
  * @param {connect} onConnection
  * @returns {Promise} Resolved promise to indicate successful database connection
  */
-let connect = (onConnection) => {
+let connect = async (onConnection) => {
   mongoose.Promise = global.Promise;
+
+  if (env === "ci") {
+    const { MongoMemoryServer } = require("mongodb-memory-server");
+    const mongoServer = await MongoMemoryServer.create();
+    config = { url: mongoServer.getUri() };
+  } else {
+    config = envConfigs[env];
+  }
 
   mongoose.connect(config.url, {
     useNewUrlParser: true,

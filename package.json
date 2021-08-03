@@ -16,6 +16,7 @@
     "jest": "^26.6.0",
     "jsdoc": "^3.6.7",
     "mongodb": "^3.6.8",
+    "mongodb-memory-server": "^7.3.4",
     "mongoose": "^5.12.12",
     "properties-reader": "^2.2.0",
     "react": "^17.0.2",
