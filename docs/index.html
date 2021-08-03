@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>To Do List (MERN Re-write)</h1>
+<p><img src="http://buildstatus.jenkins.alihamza.co.uk/buildStatus/icon?job=ToDoListMERN" alt="Build Status"></p>
+<p>This is a re-write of my To Do List application (located at <a href="https://github.com/alihamzamohammed/TodoList">To Do List - Github</a>)<br>
+The backend API is built with Express.js and Mongoose, with data storage in MongoDB.<br>
+The frontend is built in React, and is an almost identical replica of the original frontend.</p>
+<p>This project is currently a Work In Progress (currently testing). However, the backend API and frontend is completely working. The repository can be cloned, and the dev branch compiles.</p>
+<h2>Requirements</h2>
+<p>For development and compiling, you will need nodejs and node package manager (npm) installed on your system.</p>
+<h3>MongoDB</h3>
+<p>Ensure MongoDB is installed on your system, and is accessible from other applications.<br>
+Configuration for this will come in the future.</p>
+<h3>Node</h3>
+<ul>
+<li>
+<h4>Node installation on Windows</h4>
+<p>Just go on <a href="https://nodejs.org/">official Node.js website</a> and download the installer.
+Also, be sure to have <code>git</code> available in your PATH, <code>npm</code> might need it (You can find git <a href="https://git-scm.com/">here</a>).</p>
+</li>
+<li>
+<h4>Node installation on Ubuntu</h4>
+<p>You can install nodejs and npm easily with apt install, just run the following commands.</p>
+<pre><code>$ sudo apt install nodejs
+$ sudo apt install npm
+</code></pre>
+<p>This process will be identical for other Linux distributions with package managers, substitute <code>apt</code> with your OS' package manager.</p>
+</li>
+<li>
+<h4>Other Operating Systems</h4>
+<p>You can find more information about the installation on the <a href="https://nodejs.org/">official Node.js website</a> and the <a href="https://npmjs.org/">official NPM website</a>.</p>
+</li>
+</ul>
+<h3>Other Dependencies</h3>
+<p>This project depends on:</p>
+<ul>
+<li>Express.js</li>
+<li>React</li>
+<li>Mongoose</li>
+<li>Cors</li>
+<li>Jest</li>
+</ul>
+<p>All required dependencies can be installed by running <code>npm install</code>.</p>
+<h2>Getting Started</h2>
+<p>Download the latest release from Github packages, if one exists.<br>
+To compile yourself:</p>
+<ol>
+<li>Clone repository</li>
+<li>Run <code>npm install</code> to install all required dependencies</li>
+<li>Run <code>npm run build</code> to get a working static copy of the frontend. <code>npm start</code> does not need to be used, as Express.js handles serving the frontend from the <code>public</code> directory.<br>
+<code>npm start</code> can be used to start the React live server, for development.</li>
+<li>The full server can be started by running <code>node server.js</code>, this connects to MongoDB, and simultaneously serves the backend and frontend routes.</li>
+</ol>
+<p>Currently, the listening port for the Express.js server can be changed in <code>server.js</code>. A better solution will be added shortly. These settings are most likely to be placed in <code>settings.ini</code>, or an alternative configuration file.<br>
+Full unit and integration tests will also be created for the backend and frontend, as well as UI tests in Selenium.<br>
+This project contains a WSGI server-compatible executable in <code>bin/</code>, for use with production-grade web servers.</p>
+<h2>License</h2>
+<p>This project is licensed under the Apache License 2.0 - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+<h2>Authors</h2>
+<ul>
+<li><strong>Ali Hamza Mohammed</strong> - <em>All of it</em> - <a href="https://github.com/alihamzamohammed">alihamzamohammed</a></li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addNewCategory">addNewCategory</a></li><li><a href="global.html#addNewTodo">addNewTodo</a></li><li><a href="global.html#Category">Category</a></li><li><a href="global.html#categorySchema">categorySchema</a></li><li><a href="global.html#delCategory">delCategory</a></li><li><a href="global.html#deleteCategory">deleteCategory</a></li><li><a href="global.html#deleteTodo">deleteTodo</a></li><li><a href="global.html#delTodo">delTodo</a></li><li><a href="global.html#disconnect">disconnect</a></li><li><a href="global.html#getAllCategory">getAllCategory</a></li><li><a href="global.html#getAllTodo">getAllTodo</a></li><li><a href="global.html#getCategories">getCategories</a></li><li><a href="global.html#getCategory">getCategory</a></li><li><a href="global.html#getCategoryById">getCategoryById</a></li><li><a href="global.html#getTodo">getTodo</a></li><li><a href="global.html#getTodoById">getTodoById</a></li><li><a href="global.html#getTodos">getTodos</a></li><li><a href="global.html#postCategory">postCategory</a></li><li><a href="global.html#postTodo">postTodo</a></li><li><a href="global.html#putCategory">putCategory</a></li><li><a href="global.html#putTodo">putTodo</a></li><li><a href="global.html#Todo">Todo</a></li><li><a href="global.html#todoSchema">todoSchema</a></li><li><a href="global.html#updateCategory">updateCategory</a></li><li><a href="global.html#updateTodo">updateTodo</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Aug 03 2021 21:26:18 GMT+0100 (British Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
