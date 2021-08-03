@@ -1,5 +1,7 @@
 # To Do List (MERN Re-write)
 
+![Build Status](http://buildstatus.jenkins.alihamza.co.uk/buildStatus/icon?job=ToDoListMERN)
+
 This is a re-write of my To Do List application (located at [To Do List - Github](https://github.com/alihamzamohammed/TodoList))  
 The backend API is built with Express.js and Mongoose, with data storage in MongoDB.  
 The frontend is built in React, and is an almost identical replica of the original frontend.
